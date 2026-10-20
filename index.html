@@ -1,0 +1,594 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>富國島旅遊手冊</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Sora:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f3efe6; --surface:#fffdf8; --surface2:#f8f4ea; --ink:#12242b; --muted:#56676e; --line:#e3dccb;
+  --primary:#0b5c63; --primary-ink:#ffffff; --accent:#e4502f; --sun:#f0a22e; --sea:#1f9aa3;
+  --north:#1f9aa3; --central:#e0922a; --south:#e4502f;
+  --land:#e8dfc8; --water:#cfe6e8; --warn-bg:#fff1dc; --warn-ink:#7a4a00; --shadow:0 1px 2px rgba(18,36,43,.06),0 8px 24px rgba(18,36,43,.08);
+  --hero1:#0b5c63; --hero2:#12828a;
+  --font:"Noto Sans TC",system-ui,-apple-system,"PingFang TC","Microsoft JhengHei",sans-serif;
+  --num:"Sora","Noto Sans TC",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0b1519; --surface:#132227; --surface2:#182b31; --ink:#e8f0f1; --muted:#94a9af; --line:#24373e;
+  --primary:#4cc3c9; --primary-ink:#06262a; --accent:#ff7a5c; --sun:#f5b64a; --sea:#4cc3c9;
+  --north:#4cc3c9; --central:#f5b64a; --south:#ff7a5c;
+  --land:#223940; --water:#0e2025; --warn-bg:#3a2a10; --warn-ink:#ffd08a; --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.3);
+  --hero1:#0d3d44; --hero2:#115058; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0b1519; --surface:#132227; --surface2:#182b31; --ink:#e8f0f1; --muted:#94a9af; --line:#24373e;
+  --primary:#4cc3c9; --primary-ink:#06262a; --accent:#ff7a5c; --sun:#f5b64a; --sea:#4cc3c9;
+  --north:#4cc3c9; --central:#f5b64a; --south:#ff7a5c;
+  --land:#223940; --water:#0e2025; --warn-bg:#3a2a10; --warn-ink:#ffd08a; --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.3);
+  --hero1:#0d3d44; --hero2:#115058; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.6 var(--font);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:0 84px;-webkit-text-size-adjust:100%}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--primary);z-index:30}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+.wrap{max-width:1040px;margin:0 auto}
+/* header */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;margin:0 calc(-1*max(16px,env(safe-area-inset-left,0px))) 0 calc(-1*max(16px,env(safe-area-inset-right,0px)));
+  padding:10px max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px));background:var(--primary);color:var(--primary-ink);display:flex;align-items:center;gap:10px}
+.brand{display:flex;flex-direction:column;line-height:1.15;min-width:0;flex:1}
+.brand b{font:800 17px var(--num);letter-spacing:.02em}
+.brand span{font-size:11px;opacity:.85;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ibtn{display:inline-flex;align-items:center;gap:6px;border:1px solid color-mix(in srgb,var(--primary-ink) 35%,transparent);background:transparent;color:inherit;border-radius:999px;padding:7px 12px;font-size:13px;font-weight:500}
+.ibtn:hover{background:color-mix(in srgb,var(--primary-ink) 14%,transparent)}
+.ibtn svg{width:16px;height:16px;flex:none}
+.ibtn .lbl{display:none}
+@media(min-width:560px){.ibtn .lbl{display:inline}}
+/* hero */
+.hero{margin-top:16px;border-radius:22px;background:linear-gradient(135deg,var(--hero1),var(--hero2));color:#fff;padding:22px;display:grid;gap:18px;overflow:hidden;position:relative;box-shadow:var(--shadow)}
+.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,#ffd48a 0%,#f0a22e 45%,transparent 70%);opacity:.55}
+.hero h1{margin:0;font:800 clamp(26px,6vw,40px)/1.1 var(--num);letter-spacing:-.01em;text-wrap:balance;position:relative}
+.hero p{margin:6px 0 0;opacity:.9;position:relative}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;position:relative}
+.kpi{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:10px 12px}
+.kpi small{display:block;font-size:11px;opacity:.8;letter-spacing:.06em}
+.kpi b{font:700 20px var(--num);font-variant-numeric:tabular-nums}
+.flights{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));position:relative}
+.fl{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.fl .rt{font:700 22px var(--num);font-variant-numeric:tabular-nums}
+.fl small{opacity:.85;font-size:12px}
+/* tabs */
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:25;background:var(--surface);border-top:1px solid var(--line);
+  display:flex;justify-content:space-around;padding:6px max(8px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px))}
+.tab{flex:1;max-width:160px;border:0;background:transparent;display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 4px;border-radius:12px;color:var(--muted);font-size:12px;font-weight:500}
+.tab svg{width:22px;height:22px}
+.tab[aria-selected="true"]{color:var(--primary);background:color-mix(in srgb,var(--primary) 12%,transparent);font-weight:700}
+@media(min-width:760px){
+  body{padding-block:0 40px}
+  .tabs{position:sticky;top:calc(env(safe-area-inset-top,0px) + 56px);bottom:auto;border:1px solid var(--line);border-radius:16px;margin:14px 0 0;padding:6px;gap:6px;z-index:15;justify-content:flex-start}
+  .tab{flex-direction:row;justify-content:center;gap:8px;max-width:none;font-size:14px;padding:9px 14px}
+}
+/* day chips */
+.chips{display:flex;gap:8px;overflow-x:auto;padding:14px 0 8px;scrollbar-width:none;scroll-snap-type:x proximity}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;scroll-snap-align:start;min-width:64px;border:1px solid var(--line);background:var(--surface);border-radius:16px;padding:8px 10px;text-align:center;line-height:1.2}
+.chip small{display:block;font-size:11px;color:var(--muted)}
+.chip b{font:700 15px var(--num)}
+.chip i{display:block;width:18px;height:3px;border-radius:2px;margin:5px auto 0;background:var(--rc)}
+.chip[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip[aria-selected="true"] small{color:inherit;opacity:.8}
+/* day head */
+.dayhead{display:grid;gap:8px;margin:8px 0 14px}
+.dayhead h2{margin:0;font:800 clamp(22px,4.5vw,30px)/1.15 var(--font);text-wrap:balance}
+.meta{display:flex;flex-wrap:wrap;gap:8px}
+.pill{display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px 10px;font-size:12.5px;color:var(--muted)}
+.pill b{color:var(--ink);font-weight:700}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--rc);display:inline-block}
+.alert{background:var(--warn-bg);color:var(--warn-ink);border-radius:14px;padding:12px 14px;font-size:14px;display:flex;gap:10px;border:1px solid color-mix(in srgb,var(--warn-ink) 22%,transparent)}
+.alert svg{width:20px;height:20px;flex:none;margin-top:2px}
+/* layout */
+.cols{display:grid;gap:18px}
+@media(min-width:900px){.cols{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);align-items:start}.stickycol{position:sticky;top:calc(env(safe-area-inset-top,0px) + 130px)}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
+/* timeline */
+.tl{list-style:none;margin:0;padding:6px 0}
+.ev{display:grid;grid-template-columns:78px 1fr;gap:12px;padding:12px 16px;position:relative}
+.ev+.ev{border-top:1px dashed var(--line)}
+.time{font:700 13px var(--num);font-variant-numeric:tabular-nums;color:var(--primary);padding-top:2px;line-height:1.35}
+.ev h3{margin:0;font-size:15.5px;line-height:1.35;display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center}
+.ev p{margin:4px 0 0;color:var(--muted);font-size:13.5px}
+.tag{font:500 11px var(--font);letter-spacing:.04em;border-radius:6px;padding:1px 7px;background:color-mix(in srgb,var(--primary) 12%,transparent);color:var(--primary)}
+.tag.吃,.tag.夜市{background:color-mix(in srgb,var(--sun) 24%,transparent);color:color-mix(in srgb,var(--sun) 55%,var(--ink))}
+.tag.表演{background:color-mix(in srgb,var(--accent) 16%,transparent);color:var(--accent)}
+.warn{margin-top:8px;background:var(--warn-bg);color:var(--warn-ink);border-radius:10px;padding:6px 10px;font-size:12.5px}
+.go{white-space:nowrap;display:inline-flex;gap:5px;align-items:center;margin-top:8px;font-size:12.5px;font-weight:700;color:var(--primary);text-decoration:none;border:1px solid color-mix(in srgb,var(--primary) 35%,transparent);border-radius:999px;padding:3px 10px;background:transparent}
+.go svg{width:13px;height:13px}
+.go:hover{background:color-mix(in srgb,var(--primary) 10%,transparent)}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.pin{border:0;background:transparent;padding:0;font:inherit;color:var(--primary);text-decoration:underline;text-underline-offset:3px;cursor:pointer;font-size:12.5px;font-weight:700;margin-top:8px}
+/* food */
+.sec{margin:24px 0 10px;display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.sec h2{margin:0;font-size:19px}
+.sec small{color:var(--muted)}
+.fgrid{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.food{padding:14px;display:flex;flex-direction:column;gap:6px}
+.food h4{margin:0;font-size:15px;display:flex;justify-content:space-between;gap:8px}
+.food .k{font-size:13.5px}
+.food .w{font-size:12.5px;color:var(--muted)}
+.food .go{align-self:flex-start;margin-top:auto}
+.ftag{font-size:11px;border-radius:6px;padding:1px 7px;background:color-mix(in srgb,var(--sun) 24%,transparent);color:color-mix(in srgb,var(--sun) 55%,var(--ink));height:fit-content;white-space:nowrap}
+.note{font-size:12.5px;color:var(--muted);margin-top:10px}
+/* map */
+.mapcard{overflow:hidden;position:relative}
+.mapbar{display:flex;flex-wrap:wrap;gap:8px;padding:10px;align-items:center;border-bottom:1px solid var(--line)}
+.seg{display:flex;gap:4px;background:var(--surface2);border-radius:10px;padding:3px}
+.seg button{border:0;background:transparent;border-radius:8px;padding:5px 10px;font-size:12.5px;font-weight:500;color:var(--muted)}
+.seg button[aria-pressed="true"],.seg button[aria-selected="true"]{background:var(--ink);color:var(--bg);font-weight:700}
+.mapbar .sp{flex:1}
+.mapbox{position:relative;background:var(--water);height:min(74vh,125vw)}
+#svg{display:block;width:100%;height:100%;touch-action:manipulation}
+.mapbox:fullscreen,.mapbox.imm{background:var(--water)}
+.mapbox:fullscreen,.mapbox.imm{height:100vh}
+.mapbox.imm{position:fixed;inset:0;z-index:50}
+.mapfs{position:absolute;right:10px;top:10px;z-index:2;background:var(--surface);color:var(--ink);border:1px solid var(--line);box-shadow:var(--shadow)}
+.mapfs:hover{background:var(--surface2)}
+.legend{position:absolute;left:10px;bottom:10px;background:color-mix(in srgb,var(--surface) 92%,transparent);border:1px solid var(--line);border-radius:12px;padding:6px 10px;font-size:11.5px;display:flex;gap:10px;flex-wrap:wrap;max-width:calc(100% - 20px)}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.sheet{position:absolute;left:10px;right:10px;bottom:56px;background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:12px 14px;max-width:420px;z-index:3}
+.sheet[hidden]{display:none!important}
+.sheet h4{margin:0 0 2px;font-size:15px}
+.sheet p{margin:0;font-size:13px;color:var(--muted)}
+.sheet .x{position:absolute;right:8px;top:6px;border:0;background:transparent;font-size:18px;color:var(--muted)}
+.mp{cursor:pointer}
+.mp text{font:700 11px var(--num);fill:#fff;text-anchor:middle;pointer-events:none}
+.mp:focus-visible circle{stroke:var(--ink);stroke-width:2}
+.lab{font:500 10.5px var(--font);fill:var(--ink);paint-order:stroke;stroke:var(--water);stroke-width:3px;pointer-events:none}
+.plist{display:grid;gap:8px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));margin-top:12px}
+.prow{display:flex;gap:10px;align-items:center;padding:10px 12px}
+.prow .nn{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font:700 12px var(--num);color:#fff;background:var(--rc);flex:none}
+.prow .t{flex:1;min-width:0;font-size:13.5px;line-height:1.3}
+.prow .t small{display:block;color:var(--muted);font-size:11.5px}
+/* list */
+.todo{list-style:none;margin:0;padding:6px 0}
+.todo li{display:flex;gap:10px;align-items:flex-start;padding:10px 16px}
+.todo li+li{border-top:1px dashed var(--line)}
+.todo input{width:20px;height:20px;margin-top:2px;accent-color:var(--primary);flex:none}
+.todo input:checked+span{text-decoration:line-through;color:var(--muted)}
+.cost{display:flex;justify-content:space-between;padding:10px 16px;font-variant-numeric:tabular-nums}
+.cost+.cost{border-top:1px dashed var(--line)}
+.cost.total{font:800 16px var(--num);border-top:2px solid var(--ink)}
+.fix{padding:12px 16px}
+.fix+.fix{border-top:1px dashed var(--line)}
+.fix b{display:block;font-size:14px}
+.fix span{color:var(--muted);font-size:13.5px}
+.stays{display:grid;gap:8px}
+.stay{display:flex;justify-content:space-between;gap:10px;padding:12px 16px;align-items:center}
+.stay+.stay{border-top:1px dashed var(--line)}
+.stay small{color:var(--muted);display:block}
+.copyok{font-size:12px;color:var(--primary);margin-left:6px}
+footer{margin:28px 0 0;color:var(--muted);font-size:12.5px}
+footer a{color:var(--primary)}
+.hide{display:none!important}
+body.imm .hero,body.imm footer{display:none}
+@media(prefers-reduced-motion:no-preference){.view{animation:fade .25s ease}@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}}
+</style>
+
+<style>
+@media(max-width:559px){
+ .hero{padding:16px;gap:12px;border-radius:18px}
+ .hero p{font-size:13px}
+ .kpis{grid-template-columns:repeat(4,1fr);gap:6px}
+ .kpi{padding:7px 8px}.kpi small{font-size:10px}.kpi b{font-size:14px}
+ .flights{grid-template-columns:1fr 1fr;gap:6px}
+ .fl{padding:8px 10px}.fl .rt{font-size:12.5px}.fl small{font-size:10px}
+}
+</style>
+<div class="bar">
+  <div class="brand"><b>PHU QUỐC 富國島</b><span>2026/10/24 – 10/31 · 8 天旅遊手冊</span></div>
+  <button class="ibtn" id="fsBtn" type="button" aria-label="全螢幕">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+    <span class="lbl" id="fsLbl">全螢幕</span></button>
+  <button class="ibtn" id="thBtn" type="button" aria-label="切換深淺色">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    <span class="lbl">深／淺</span></button>
+</div>
+<div class="wrap">
+  <section class="hero" id="hero">
+    <div style="position:relative"><h1>富國島 8 天 7 夜</h1><p>北島 → 中部 → 南島（日落小鎮）。時間已依 2026/10 最新資訊與你的 PDF 逐項校對。</p></div>
+    <div class="kpis">
+      <div class="kpi"><small>倒數</small><b id="cd">–</b></div>
+      <div class="kpi"><small>天數</small><b>8D7N</b></div>
+      <div class="kpi"><small>住宿</small><b>3 處</b></div>
+      <div class="kpi"><small>火舞夜</small><b>週一</b></div>
+    </div>
+    <div class="flights">
+      <div class="fl"><div><small>10/24 週六 · VJ845</small><div class="rt">TPE 14:10 → PQC 16:50</div></div></div>
+      <div class="fl"><div><small>10/31 週六 · VJ844</small><div class="rt">PQC 08:25 → TPE 13:00</div></div></div>
+    </div>
+  </section>
+  <nav class="tabs" role="tablist" aria-label="主選單">
+    <button class="tab" role="tab" data-v="plan" aria-selected="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="3"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>行程</button>
+    <button class="tab" role="tab" data-v="map" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>地圖</button>
+    <button class="tab" role="tab" data-v="food" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v8a2 2 0 0 0 2 2v8M10 3v8M6 7h4M17 21V3c-2.5 1.5-3.5 4-3.5 7s1 4 3.5 4"/></svg>美食</button>
+    <button class="tab" role="tab" data-v="more" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3 8-8M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg>清單</button>
+  </nav>
+  <main>
+    <div id="v-plan" class="view"><div class="chips" id="chips" role="tablist" aria-label="選擇日期"></div><div id="day"></div></div>
+    <div id="v-map" class="view hide">
+      <div class="card mapcard">
+        <div class="mapbar">
+          <div class="seg" id="dayseg"></div>
+          <div class="seg" id="regseg"></div>
+          <span class="sp"></span>
+        </div>
+        <div class="mapbox" id="mapbox">
+          <button class="ibtn mapfs" id="mapFs" type="button" aria-label="地圖全螢幕"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg><span class="lbl">地圖全螢幕</span></button>
+          <svg id="svg" viewBox="0 0 540 960" role="img" aria-label="富國島示意地圖"></svg>
+          <div class="legend"><span><i class="dot" style="--rc:var(--north)"></i>北</span><span><i class="dot" style="--rc:var(--central)"></i>中</span><span><i class="dot" style="--rc:var(--south)"></i>南</span><span>◆ 住宿　● 景點　▲ 夜市／表演</span></div>
+          <div class="sheet" id="sheet" hidden></div>
+        </div>
+      </div>
+      <p class="note">這是示意地圖（海岸線為手繪、位置為約略點位，非實際比例）。每個地點的「Google 地圖」連結才是正確導航位置；Plus Code 地點（Sonasea、日落小鎮、開心夜市、纜車站）座標由代碼推算。</p>
+      <div class="plist" id="plist"></div>
+    </div>
+    <div id="v-food" class="view hide"><div id="foodAll"></div></div>
+    <div id="v-more" class="view hide">
+      <div class="sec"><h2>出發前待辦</h2><small>勾選會存在這台裝置</small></div>
+      <div class="card"><ul class="todo" id="todo"></ul></div>
+      <div class="sec"><h2>住宿</h2></div>
+      <div class="card stays" id="stays"></div>
+      <div class="sec"><h2>已付費用（來自 PDF）</h2><small>原檔未標幣別</small></div>
+      <div class="card" id="costs"></div>
+      <div class="sec"><h2>本版校對修正</h2></div>
+      <div class="card" id="fixes"></div>
+    </div>
+  </main>
+  <footer>資料查於 2026/10/19–20，表演與營業時間可能調整，出發前請用各園區 App 與 Google 地圖再確認。未驗證：飯店實際地址、Camia 詳細地址、纜車最後一班回程、機場車程。
+    參考：<a href="https://vinwonders.com/en/wonderpedia/news/vinwonders-phu-quoc-opening-hours/" target="_blank" rel="noopener">VinWonders</a> ·
+    <a href="https://vinpearl.com/en/bus-to-vinpearl-phu-quoc" target="_blank" rel="noopener">VinBus</a> ·
+    <a href="https://vinwonders.com/en/wonderpedia/news/what-to-eat-at-grand-world-phu-quoc/" target="_blank" rel="noopener">Grand World 餐廳</a> ·
+    <a href="https://wanderlog.com/list/geoCategory/198067/where-to-eat-best-restaurants-in-duong-dong" target="_blank" rel="noopener">Dương Đông 餐廳</a> ·
+    <a href="https://visitphuquoc.com.vn/en/lunch-at-sunset-town-with-a-range-of-delicious-eateries-and-beautiful-views-9754" target="_blank" rel="noopener">日落小鎮餐廳</a> ·
+    <a href="https://www.vietjetair.com/en/destinations/experience/what-to-eat-in-phu-quoc-discover-local-cuisine-from-morning-till-late-night" target="_blank" rel="noopener">在地早午晚餐</a></footer>
+</div>
+<script>
+/* ===== POIs: [名稱, 緯度, 經度, 類別, 搜尋字串, 精度] ===== */
+const POIS = {
+  airport:{n:"富國島機場 PQC",la:10.1698,lo:103.9931,c:"move",q:"Phu Quoc International Airport",ex:1},
+  moc:{n:"Mộc Homestay（Grand World）",la:10.3232,lo:103.8608,c:"stay",q:"Moc Homestay GrandWorld Phu Quoc",ex:0},
+  t2:{n:"Grand World T2 停車場（VinBus 終點）",la:10.3195,lo:103.8645,c:"move",q:"Grand World Phu Quoc T2 parking",ex:0},
+  gw:{n:"Grand World 富國大世界",la:10.3208,lo:103.8628,c:"sight",q:"Grand World Phu Quoc",ex:0},
+  vw:{n:"VinWonders 珍珠樂園",la:10.3318,lo:103.8590,c:"sight",q:"VinWonders Phu Quoc",ex:0},
+  safari:{n:"Vinpearl Safari 野生動物園",la:10.3295,lo:103.8895,c:"sight",q:"Vinpearl Safari Phu Quoc",ex:0},
+  teddy:{n:"泰迪熊博物館（Grand World）",la:10.3216,lo:103.8640,c:"sight",q:"Teddy Bear Museum Grand World Phu Quoc",ex:0},
+  mv:{n:"M Village（Dương Đông）",la:10.2085,lo:103.9668,c:"stay",q:"M Village Phu Quoc",ex:0},
+  dd:{n:"陽東夜市（Dinh Cau 夜市）",la:10.2188,lo:103.9660,c:"night",q:"Phu Quoc Night Market 54 Nguyen Trai Duong Dong",ex:0},
+  sona:{n:"Sonasea 夜市",la:10.1297,lo:103.9815,c:"night",q:"4XHJ+VJR Duong To Phu Quoc",ex:1},
+  ocsen:{n:"Ocsen Beach Bar & Club",la:10.2142,lo:103.9606,c:"show",q:"OCSEN Beach Bar & Club Phu Quoc",ex:0},
+  eastv:{n:"Hàm Ninh 漁村",la:10.1697,lo:104.0467,c:"sight",q:"Ham Ninh fishing village Phu Quoc",ex:0},
+  suoi:{n:"Suối Tranh 瀑布",la:10.1625,lo:104.0190,c:"sight",q:"Suoi Tranh Waterfall Phu Quoc",ex:0},
+  camia:{n:"Camia Restaurant（Ông Lãng）",la:10.2565,lo:103.9450,c:"food",q:"Camia Restaurant Phu Quoc Ong Lang",ex:0},
+  sao:{n:"Sao Beach 星沙灘",la:10.0536,lo:104.0286,c:"sight",q:"Sao Beach Phu Quoc",ex:0},
+  hai:{n:"Hai Bột Home 54（Hai Bột Eatery & Homestay）",la:10.0345,lo:104.0120,c:"stay",q:"Hai Bot Eatery Homestay Phu Quoc",ex:0},
+  sunset:{n:"日落小鎮 Sunset Town",la:10.0299,lo:104.0072,c:"sight",q:"22H4+XVH An Thoi Phu Quoc",ex:1},
+  kiss:{n:"親吻橋 Kiss Bridge",la:10.0306,lo:104.0030,c:"sight",q:"Kiss Bridge Phu Quoc",ex:0},
+  happy:{n:"日落小鎮開心夜市",la:10.0357,lo:104.0033,c:"night",q:"22P3+78G An Thoi Phu Quoc",ex:1},
+  cable:{n:"跨海纜車 An Thới 站",la:10.0251,lo:104.0084,c:"move",q:"22G5+29C An Thoi Phu Quoc",ex:1},
+  hon:{n:"太陽世界香島 Hòn Thơm",la:9.9640,lo:104.0420,c:"sight",q:"Sun World Hon Thom Nature Park Phu Quoc",ex:0},
+  khem:{n:"Khem Beach 剋姆海灘",la:10.0300,lo:104.0392,c:"sight",q:"Khem Beach Phu Quoc",ex:0},
+  pagoda:{n:"護國寺 Hộ Quốc",la:10.0720,lo:104.0170,c:"sight",q:"Ho Quoc Pagoda Phu Quoc",ex:0},
+  fish:{n:"魚露工廠（Dương Đông 一帶）",la:10.2050,lo:103.9720,c:"sight",q:"Phu Quoc fish sauce factory",ex:0}
+};
+/* ===== Days ===== */
+const DAYS = [
+ {d:1,date:"10/24",wd:"六",region:"north",rname:"北島",title:"抵達 · 富國大世界",stay:"moc",
+  sum:"落地、VinBus、入住，晚上看免費水舞",
+  items:[
+   {t:"14:10",ti:"桃園 T1 起飛",de:"VietJet Air，B7 登機門；16:50 抵達富國島（航班 VJ845）。電子入境卡 10/22 起可填，QR Code 截圖＋列印紙本。",tag:"航班"},
+   {t:"16:50",ti:"落地、入境",de:"預留 30–60 分鐘入境、領行李、換少量越盾。",loc:"airport",tag:"移動"},
+   {t:"≈18:00",ti:"VinBus 17（或 19）→ Grand World",de:"票價 50,000 越盾（2026/1/1 起收費，舊資訊的「免費」已過期）。車程約 65–70 分鐘，建議備現金。",loc:"t2",tag:"移動",warn:"原行程「VinBus 免費」已過時，請備現金。"},
+   {t:"≈19:15",ti:"步行 10 分鐘 → Mộc Homestay",de:"入住 14:00 起、退房 12:00，無早餐。",loc:"moc",tag:"住宿"},
+   {t:"19:45",ti:"晚餐（Grand World 內）",de:"先吃再佔位，詳見下方「附近吃」。",tag:"吃",meal:1},
+   {t:"21:00",ti:"提前佔位看水舞",de:"愛情湖畔前排（無遮蔽、正面看）、威尼斯運河橋上（視角較高）；湖畔餐廳戶外座位要預訂，樓上露台低消一杯飲料約 80,000 越盾。",loc:"gw",tag:"表演"},
+   {t:"21:30–22:00",ti:"免費水舞 Sắc màu Venice",de:"每晚 21:30–22:00。",loc:"gw",tag:"表演"}
+  ],
+  food:[
+   {n:"Bún Quậy Kiến Xây",k:"小卷／蝦 · 自調沾醬的招牌粗米線",w:"Shanghai Town TH01-15 · 15:15–21:30",q:"Bun Quay Kien Xay Grand World Phu Quoc",tag:"招牌"},
+   {n:"Phở Tâm",k:"牛肉河粉",w:"原行程 Grand World 推薦",q:"Pho Tam Grand World Phu Quoc",tag:"清爽"},
+   {n:"Bếp Nhà Restaurant",k:"越南家常菜＋海鮮",w:"原行程 Grand World 推薦",q:"Bep Nha Restaurant Grand World Phu Quoc",tag:"家常"},
+   {n:"Cơm Bắc 1983",k:"越式家常飯菜，營業時間長",w:"Shanghai Town 68–70 · 07:00–22:30",q:"Com Bac 1983 Grand World Phu Quoc",tag:"飯"},
+   {n:"Saigon Domain",k:"湖畔歐式餐廳，可邊吃邊看水舞（需訂位）",w:"Venice Town SA-01-37 · 07:30–23:00",q:"Saigon Domain Grand World Phu Quoc",tag:"看秀"}
+  ]},
+ {d:2,date:"10/25",wd:"日",region:"north",rname:"北島",title:"VinWonders 珍珠樂園",stay:"moc",
+  sum:"整天玩樂園，晚上回 Grand World 吃飯",
+  items:[
+   {t:"08:00",ti:"早餐",de:"樂園 09:00 開，先吃再走。",tag:"吃",meal:1},
+   {t:"09:00",ti:"搭 V1／V2.1／V3.1／V4.1／V5.1 到 VinWonders",de:"動線建議 1-3-4-5-1，入園前先下載 VinWonders App 查當日場次。",loc:"vw",tag:"樂園"},
+   {t:"09:30",ti:"歐洲大道角色遊行",de:"",tag:"表演"},
+   {t:"11:00",ti:"海王宮殿餵魚秀",de:"",tag:"表演"},
+   {t:"11:30 / 14:00 / 17:30",ti:"歐洲大道水舞",de:"",tag:"表演"},
+   {t:"14:00 / 15:30",ti:"美人魚秀",de:"",tag:"表演"},
+   {t:"16:30 · 17:00",ti:"角色遊行 · 嘉年華遊行",de:"",tag:"表演"},
+   {t:"18:45–19:05",ti:"Once Show 閉幕秀",de:"演出時間會依季節調整，以當天 App 為準。",tag:"表演"},
+   {t:"19:30",ti:"閉園，搭 V3.2／V4.2／V5.2 回 Grand World",de:"",loc:"gw",tag:"移動"},
+   {t:"20:00",ti:"晚餐 → 21:30 免費水舞（可選）",de:"第二晚可換個位置看；也可試付費大秀 Tinh hoa Việt Nam（約 23–30 萬越盾），趕不上就略過。",tag:"吃",meal:1}
+  ],
+  food:[
+   {n:"Phở Lý Quốc Sư",k:"河粉，早上開園前先吃",w:"Shanghai Town SA-03-18 · 08:00–23:00",q:"Pho Ly Quoc Su Grand World Phu Quoc",tag:"早餐"},
+   {n:"Cơm Niêu Cái Bếp Garden",k:"砂鍋飯（陶鍋焦香）",w:"Grand World IN 07-39 · 10:00–22:00",q:"Com Nieu Cai Bep Garden Grand World Phu Quoc",tag:"砂鍋飯"},
+   {n:"Thế Giới Hải Sản Hàm Ninh",k:"海鮮（Hàm Ninh 蟹系）",w:"Indochine Town IN 06-31 · 17:00–00:00",q:"The Gioi Hai San Ham Ninh Grand World Phu Quoc",tag:"海鮮"},
+   {n:"66 Paris（Hải Sản 66）",k:"海鮮",w:"Mallorca Town MC 05-26 · 07:30–22:00",q:"Hai San 66 Paris Grand World Phu Quoc",tag:"海鮮"}
+  ]},
+ {d:3,date:"10/26",wd:"一",region:"central",rname:"北→中",title:"Safari · 搬到中部 · 夜市＋火舞",stay:"mv",
+  sum:"週一有 22:00 火舞：夜市後接 Ocsen",
+  alert:"校對：Ocsen 22:00 火舞週二停演，所以排在週一（Day3）夜市之後；週二（Day4）當天不排火舞。Ocsen 20:00 後入場要付 80,000 越盾，建議 20:00 前進場卡位。",
+  items:[
+   {t:"08:00",ti:"退房、行李寄放櫃台",de:"Mộc 12:00 退房，但你要先去 Safari：出發前先把行李寄在 Mộc 前台（請提前跟房東講），下午回來拿。",loc:"moc",tag:"住宿",warn:"行李處理是原行程沒寫的缺口，請先跟房東確認可寄放。"},
+   {t:"08:30",ti:"步行 10 分鐘到 T2，搭 V1／V2.1／V3.1／V4.1／V5.1 → Safari 站",de:"",loc:"t2",tag:"移動"},
+   {t:"09:00–12:30",ti:"Vinpearl Safari（09:00–16:00）",de:"Safari 巴士看長頸鹿、環尾狐猴、小齒棕櫚貓互動；動物秀約 10:00、14:00（週一有），以 App 為準。",loc:"safari",tag:"動物園"},
+   {t:"12:30",ti:"午餐",de:"園內或回 Grand World 吃。",tag:"吃",meal:1},
+   {t:"13:30–14:30",ti:"Grand World 泰迪熊博物館（10:00–21:00）",de:"逛完回 Mộc 取行李。",loc:"teddy",tag:"景點"},
+   {t:"15:00",ti:"Grab → M Village（Dương Đông）",de:"約 40–50 分鐘（我的估計，未驗證）；14:00 起可入住，含早餐。",loc:"mv",tag:"住宿"},
+   {t:"17:00",ti:"陽東夜市開市（17:00–00:00）",de:"換錢：Robinson Pearl、金剛超商。先在此吃點小吃。",loc:"dd",tag:"夜市",meal:1},
+   {t:"18:30",ti:"Grab → Sonasea 夜市（18:00–23:00）",de:"以海鮮熱炒、火鍋為主，價格比陽東實惠。位置在 Dương Đông 南邊約 10 公里（我用 Plus Code 推算），車程約 20–25 分鐘。",loc:"sona",tag:"夜市",meal:1,warn:"Sonasea 與 Ocsen 反向，來回會花約 45 分鐘，請抓時間。"},
+   {t:"19:45",ti:"Grab → Ocsen（目標 20:00 前進場）",de:"20:00 前免入場費；之後 80,000 越盾。想省事可把 Sonasea 換成陽東夜市吃，就能早點到 Ocsen。",loc:"ocsen",tag:"表演"},
+   {t:"22:00",ti:"Ocsen 火舞表演（週二無）",de:"表演 22:00，營業到 01:00。",loc:"ocsen",tag:"表演"},
+   {t:"22:45",ti:"步行 13 分鐘回 M Village",de:"深夜走路請走大路，或叫 Grab。",loc:"mv",tag:"移動"}
+  ],
+  food:[
+   {n:"Bún Quậy Kiến Xây（總店）",k:"小卷／蝦粗米線",w:"28 Bạch Đằng，離陽東夜市近",q:"Bun Quay Kien Xay 28 Bach Dang Phu Quoc",tag:"招牌"},
+   {n:"Si's Crab House",k:"螃蟹套餐、招牌醬",w:"26 Nguyễn Trãi · 近陽東夜市",q:"Si's Crab House 26 Nguyen Trai Phu Quoc",tag:"螃蟹"},
+   {n:"Sonasea 夜市海鮮",k:"海鮮熱炒、火鍋，龍蝦大餐價格較親民",w:"18:00–23:00",q:"4XHJ+VJR Duong To Phu Quoc",tag:"夜市"},
+   {n:"Cơm Việt – Green Tree",k:"Grand World 午餐備案，越式家常飯",w:"Indochine Town · 10:00–22:00",q:"Com Viet Green Tree Grand World Phu Quoc",tag:"午餐"}
+  ]},
+ {d:4,date:"10/27",wd:"二",region:"central",rname:"中部",title:"東島半日 · 按摩 · Camia",stay:"mv",
+  sum:"週二沒有火舞：晚上輕鬆收",
+  alert:"校對：這天 Ocsen 沒有 22:00 火舞，所以前一版把 Ocsen、Sonasea 排在週二是錯的，已改到 Day3（週一）。",
+  items:[
+   {t:"08:30",ti:"M Village 早餐",de:"",loc:"mv",tag:"吃",meal:1},
+   {t:"09:00",ti:"東島半日（叫 Grab 或包車）",de:"胡椒園 → Hàm Ninh 漁村 → Suối Tranh 瀑布（雨季水量大、石階滑）→ Sim 酒廠。現成團約 US$79。",loc:"eastv",tag:"景點"},
+   {t:"11:30",ti:"Hàm Ninh 午餐",de:"招牌 Hàm Ninh 蟹、鯡魚沙拉；點餐前先問價，帶現金。",loc:"eastv",tag:"吃",meal:1},
+   {t:"13:00",ti:"Suối Tranh 瀑布（可選）",de:"",loc:"suoi",tag:"景點"},
+   {t:"14:00–16:00",ti:"按摩",de:"在 Dương Đông 一帶訂一間，出發前確認接送。",tag:"放鬆"},
+   {t:"16:45",ti:"抵達 Camia（17:00 訂位）",de:"KKday 憑證要求提前 15 分鐘；3 人；訂單 26KK266894688。位在北部 Ông Lãng，餐廳面海，價位中高。",loc:"camia",tag:"晚餐",warn:"Camia 詳細地址未查到，請以 KKday 憑證上的為準。"},
+   {t:"19:00",ti:"回 Dương Đông，夜市逛逛（可選）",de:"想吃甜點：Dinh Cầu 夜市的 bánh khéo、椰子冰淇淋。這晚沒有火舞，早點休息，明天要搬到南島。",loc:"dd",tag:"夜市"}
+  ],
+  food:[
+   {n:"Bún Kèn Út Lượm",k:"椰奶咖哩魚湯米線（早餐）",w:"42 Đường 30 Tháng 4 · 約營業到中午",q:"Bun Ken Ut Luom 42 30 Thang 4 Phu Quoc",tag:"早餐"},
+   {n:"Hàm Ninh 漁村海鮮",k:"Hàm Ninh 蟹、鯡魚沙拉、烤鯖魚",w:"Biển Xanh、Hạnh Nhung、Kim Cương、Sông Lê；浮動餐廳 Bè Ghe、Tinh Biển",q:"Ham Ninh fishing village restaurants Phu Quoc",tag:"午餐"},
+   {n:"Sông Xanh Restaurant",k:"Hàm Ninh 蟹炒飯",w:"217 Đường 30 Tháng 4",q:"Song Xanh Restaurant 217 30 Thang 4 Phu Quoc",tag:"螃蟹"},
+   {n:"Dì Hồng Eatery",k:"椰奶魚湯米線，近 Dinh Cầu 夜市",w:"4 Nguyễn Trãi",q:"Di Hong Eatery 4 Nguyen Trai Phu Quoc",tag:"在地"}
+  ]}
+];
+DAYS.push(
+ {d:5,date:"10/28",wd:"三",region:"south",rname:"南島",title:"搬到南島 · 日落小鎮",stay:"hai",
+  sum:"Sao Beach 午餐 → 日落小鎮 → 親吻橋日落 → 煙火",
+  items:[
+   {t:"12:00 前",ti:"M Village 退房，叫 Grab 往南",de:"車程約 45–60 分鐘（我的估計）。",loc:"mv",tag:"移動"},
+   {t:"12:30",ti:"Sao Beach 午餐、玩水",de:"行李可先寄 Hai Bột；海灘餐廳有鯡魚沙拉、鮭魚（cobia）火鍋。",loc:"sao",tag:"海灘",meal:1},
+   {t:"14:00",ti:"Hai Bột Home 54 入住（King Room）",de:"10/28 14:00 入住，一路住到 10/31 退房 12:00（Agoda 訂單），含早餐。",loc:"hai",tag:"住宿"},
+   {t:"15:00–15:30",ti:"日落小鎮：Tháp Bút Chì 拍照",de:"Eric Kayser 麵包、Vietnam Select 大超市。",loc:"sunset",tag:"景點"},
+   {t:"17:00",ti:"親吻橋看日落",de:"約 17:35 日落（10 月底）。票價約 100,000 越盾；纜車票有指定免費時段（約 19:00 前／20:05 後，以 App 為準）。",loc:"kiss",tag:"景點",warn:"免費時段來自網路資料，未經現場確認。"},
+   {t:"18:30",ti:"日落小鎮開心夜市（16:00–00:00）",de:"晚餐。",loc:"happy",tag:"夜市",meal:1},
+   {t:"21:30",ti:"Kiss of the Sea 結尾煙火",de:"Symphony of the Sea 第三季 11/10 才回歸，這幾天以 Kiss of the Sea 煙火為準。",loc:"kiss",tag:"表演"}
+  ],
+  food:[
+   {n:"Hai Bột Eatery",k:"住宿同棟餐廳，早餐含在房價",w:"入住日可先打聽",q:"Hai Bot Eatery Homestay Phu Quoc",tag:"早餐"},
+   {n:"Sao Beach 海灘餐廳",k:"鯡魚沙拉、cobia 火鍋",w:"Bãi Sao 沿岸，點餐先問價",q:"restaurants Sao Beach Phu Quoc",tag:"午餐"},
+   {n:"Phương Đông Eatery",k:"cobia 火鍋",w:"An Thới 鎮上",q:"Phuong Dong Eatery An Thoi Phu Quoc",tag:"在地"},
+   {n:"Sorrento Restaurant & Bar",k:"混合料理，海景",w:"臨海路，近親吻橋北入口",q:"Sorrento Restaurant Sunset Town Phu Quoc",tag:"看日落"},
+   {n:"LAGOON BBQ & Vietnamese",k:"烤肉與越式料理，空間開闊",w:"Venice Street FB2-05 · 午餐人多宜訂位",q:"Lagoon BBQ Sunset Town Phu Quoc",tag:"烤肉"}
+  ]},
+ {d:6,date:"10/29",wd:"四",region:"south",rname:"南島",title:"跨海纜車 · 太陽世界香島",stay:"hai",
+  sum:"早去早回，晚上夜市＋煙火",
+  items:[
+   {t:"08:45",ti:"An Thới 纜車站排隊（09:00–17:00）",de:"第一輪 09:00–11:30；11:30–13:30 暫停；第二輪 13:30–14:00；第三輪 15:30–17:30。",loc:"cable",tag:"移動",warn:"最後一班回程時間未驗證，請以現場公告為準。"},
+   {t:"09:30",ti:"香島水上樂園（10:00 起）與陸上樂園（09:30 起）",de:"泳衣不能有金屬拉鍊扣環；入口往右有置物櫃與更衣室，需押金、給感應手環；離場前還手環並把收據給櫃檯。淋浴間只有冷水、無沐浴用品與吹風機。",loc:"hon",tag:"樂園"},
+   {t:"12:00",ti:"Mango 餐廳午餐、生啤酒喝到飽",de:"泳衣外要套薄襯衫。",tag:"吃",meal:1},
+   {t:"13:30",ti:"海灘區（09:30–16:30）",de:"",loc:"hon",tag:"海灘"},
+   {t:"15:30",ti:"纜車第三輪回 An Thới",de:"留意最後一班前離島。",loc:"cable",tag:"移動"},
+   {t:"17:30",ti:"回飯店休息",de:"",loc:"hai",tag:"住宿"},
+   {t:"18:30",ti:"日落小鎮開心夜市（16:00–00:00）",de:"晚餐。",loc:"happy",tag:"夜市",meal:1},
+   {t:"21:30",ti:"日落小鎮煙火",de:"",loc:"kiss",tag:"表演"}
+  ],
+  food:[
+   {n:"Yushima Japanese Restaurant",k:"壽司、生魚片，在纜車站 T1 柱旁",w:"Unit FB304B，搭纜車前後都方便",q:"Yushima Japanese Restaurant Sunset Town Phu Quoc",tag:"日式"},
+   {n:"Kungfu Noodle Phu Quoc",k:"麵、點心，快速吃",w:"Vui Fest Bazaar 區",q:"Kungfu Noodle Phu Quoc Sunset Town",tag:"快速"},
+   {n:"Green Tree Buffet SeaFood",k:"海鮮自助，100 多道亞歐料理",w:"Sunset Town",q:"Green Tree Buffet Seafood Sunset Town Phu Quoc",tag:"自助"},
+   {n:"The Gangs Sunset",k:"歐亞料理，音樂氣氛",w:"Amalfi Street, Hoàng Hôn Town",q:"The Gangs Sunset Phu Quoc",tag:"氣氛"}
+  ]},
+ {d:7,date:"10/30",wd:"五",region:"south",rname:"南島",title:"Khem Beach · 最後一晚",stay:"hai",
+  sum:"海灘＋護國寺；最後一晚日落小鎮夜市",
+  alert:"住宿：Hai Bột 從 10/28 住到 10/31，Day7 不用換飯店，行李不必搬。",
+  items:[
+   {t:"08:30",ti:"Hai Bột 早餐",de:"",loc:"hai",tag:"吃",meal:1},
+   {t:"09:30–11:30",ti:"Khem Beach（上午浪較靜、人少）",de:"方案 B（晴天、海況好）：08:00–08:30 從安泰港出發跳島浮潛，3–4 島約 US$35 起、約 16:00 回，雨季可能停航，前一天再訂。",loc:"khem",tag:"海灘"},
+   {t:"12:00",ti:"Sao Beach 一帶午餐",de:"",loc:"sao",tag:"吃",meal:1},
+   {t:"13:30",ti:"護國寺（06:00–18:00）",de:"離 Khem、Sao 約 10–20 分鐘。",loc:"pagoda",tag:"景點"},
+   {t:"15:30",ti:"魚露工廠參觀",de:"約 15–20 分鐘，免費。",tag:"景點"},
+   {t:"17:00",ti:"回 Hai Bột 沖澡休息",de:"",loc:"hai",tag:"住宿"},
+   {t:"18:00",ti:"日落小鎮：最後一晚晚餐與夜市",de:"開心夜市 16:00–00:00；可順便再看一次親吻橋。",loc:"happy",tag:"夜市",meal:1},
+   {t:"21:00",ti:"打包、早睡",de:"確認 05:30 的車。",tag:"休息"}
+  ],
+  food:[
+   {n:"Sao Beach 海灘餐廳",k:"鯡魚沙拉、cobia 火鍋",w:"Bãi Sao 沿岸",q:"restaurants Sao Beach Phu Quoc",tag:"午餐"},
+   {n:"Sorrento Restaurant & Bar",k:"海景晚餐",w:"近親吻橋北入口",q:"Sorrento Restaurant Sunset Town Phu Quoc",tag:"晚餐"},
+   {n:"開心夜市",k:"收尾小吃、甜點",w:"16:00–00:00",q:"22P3+78G An Thoi Phu Quoc",tag:"夜市"}
+  ]},
+ {d:8,date:"10/31",wd:"六",region:"south",rname:"返程",title:"凌晨出發 · 回家",stay:null,
+  sum:"05:30 出發，08:25 起飛",
+  items:[
+   {t:"前一晚",ti:"確認 05:30 的車",de:"請 Hai Bột 代叫或先約 Grab；凌晨不好叫車。",loc:"hai",tag:"移動"},
+   {t:"05:30",ti:"Hai Bột 出發 → 機場",de:"Google 地圖約 28 分鐘、19.3 公里（你的 Agoda 行程截圖）。",loc:"airport",tag:"移動"},
+   {t:"06:00",ti:"抵達機場辦理登機",de:"",loc:"airport",tag:"移動"},
+   {t:"08:25",ti:"VJ844 起飛",de:"13:00 抵達桃園，飛行約 3 小時 35 分。出發前先跟 Hai Bột 辦好退房（房東若未醒，前一晚先結清）。",tag:"航班"}
+  ],
+  food:[]}
+);
+const TODO = [
+  ["10/22 起填寫越南電子入境卡（富國島 2026/6/1 起必填），QR Code 截圖並列印","https://prearrival.immigration.gov.vn"],
+  ["下載 VinBus App","https://vinpearl.com/en/bus-to-vinpearl-phu-quoc"],
+  ["準備越盾現金：VinBus、小店、Ocsen 入場費、小費",null],
+    ["確認 Mộc Homestay 能否 Day3 寄放行李",null],
+  ["行前再看一次 Safari 與 VinWonders 當日表演","https://vinwonders.com/en/wonderpedia/news/vinwonders-phu-quoc-opening-hours/"],
+  ["確認越南健康申報有無啟用（備用機制）",null],
+  ["跟 Hai Bột 約 10/31 05:30 的車（凌晨 Grab 不好叫）",null]
+];
+const COSTS = [["機票",8375],["eSIM",225],["Camia 訂位",687],["濾芯",94],["門票",4041+2532],["折抵",-880]];
+const FIXES = [
+  ["Ocsen／Sonasea 位置","Ocsen 週二無 22:00 火舞，火舞改接在 Day3（週一）夜市之後；Day4 週二不排火舞。"],
+  ["VinBus 17","舊資訊為免費，現為 50,000 越盾（2026/1/1 起），請備現金。"],
+  ["Symphony of the Sea","第三季 11/10 才回歸，10/28–29 沒有，煙火以 Kiss of the Sea 為準。"],
+  ["Day3 行李","Mộc 退房早於 Safari 結束，新增行李寄放安排。"],
+  ["住宿","依 Agoda 訂單只有 3 處：Mộc 10/24–26、M Village 10/26–28、Hai Bột 10/28–31；Day7 不換飯店，Day8 從 Hai Bột 出發（約 28 分到機場）。"]
+];
+(function(){
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const gmap=q=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q);
+const RC={north:"var(--north)",central:"var(--central)",south:"var(--south)"};
+const ICON_GO='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg>';
+const ICON_WARN='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l10 18H2L12 3zM12 10v5M12 18h.01"/></svg>';
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const store={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+
+/* ---- 倒數 ---- */
+(function(){const t=new Date(2026,9,24),n=new Date(),a=new Date(n.getFullYear(),n.getMonth(),n.getDate());
+ const d=Math.round((t-a)/864e5);$("#cd").textContent=d>0?d+" 天":(d>-8?"旅途中":"已結束");})();
+
+/* ---- 主題 ---- */
+$("#thBtn").onclick=()=>{const r=document.documentElement,cur=r.dataset.theme||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");
+ r.dataset.theme=cur==="dark"?"light":"dark";store.set("pq-theme",r.dataset.theme)};
+{const th=store.get("pq-theme",null);if(th)document.documentElement.dataset.theme=th}
+
+/* ---- 全螢幕 ---- */
+function fsActive(){return !!document.fullscreenElement}
+function toggleFS(el,fallback){
+  if(document.fullscreenElement===el){document.exitFullscreen&&document.exitFullscreen().catch(()=>{});return}
+  if(el.requestFullscreen){try{const p=el.requestFullscreen();if(p&&p.catch)p.catch(()=>fallback())}catch(e){fallback()}}else fallback();
+}
+$("#fsBtn").onclick=()=>{ if(fsActive()&&document.fullscreenElement!==document.documentElement){document.exitFullscreen().catch(()=>{});return}
+  if(document.body.classList.contains("imm")){document.body.classList.remove("imm");syncFs();return}
+  toggleFS(document.documentElement,()=>{document.body.classList.add("imm");syncFs()})};
+function syncFs(){const on=fsActive()||document.body.classList.contains("imm");$("#fsLbl").textContent=on?"退出全螢幕":"全螢幕";
+  $("#mapFs .lbl").textContent=(fsActive()&&document.fullscreenElement===$("#mapbox"))||$("#mapbox").classList.contains("imm")?"退出全螢幕":"地圖全螢幕";drawMap()}
+document.addEventListener("fullscreenchange",syncFs);
+$("#mapFs").onclick=()=>{const mb=$("#mapbox");
+  if(mb.classList.contains("imm")){mb.classList.remove("imm");syncFs();return}
+  toggleFS(mb,()=>{mb.classList.add("imm");syncFs()})};
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){$("#mapbox").classList.remove("imm");document.body.classList.remove("imm");syncFs()}});
+
+/* ---- 分頁 ---- */
+function show(v){$("#hero").classList.toggle("hide",v!=="plan");$$(".view").forEach(x=>x.classList.toggle("hide",x.id!=="v-"+v));
+  $$(".tab").forEach(t=>t.setAttribute("aria-selected",t.dataset.v===v));store.set("pq-view",v);if(v==="map")drawMap();window.scrollTo({top:0})}
+$$(".tab").forEach(t=>t.onclick=()=>show(t.dataset.v));
+
+/* ---- 行程 ---- */
+let cur=store.get("pq-day",1);
+const WD=["日","一","二","三","四","五","六"];
+function chips(){const c=$("#chips");c.innerHTML="";
+  DAYS.forEach(d=>{const b=document.createElement("button");b.className="chip";b.type="button";b.setAttribute("role","tab");b.style.setProperty("--rc",RC[d.region]);
+    b.setAttribute("aria-selected",d.d===cur);b.innerHTML=`<small>Day ${d.d}</small><b>${d.date}</b><small>週${d.wd}</small><i></i>`;
+    b.onclick=()=>{cur=d.d;store.set("pq-day",cur);chips();renderDay();const s=$("#chips .chip[aria-selected=true]");s&&s.scrollIntoView({inline:"center",block:"nearest"})};c.appendChild(b)})}
+function foodCard(f){return `<div class="card food"><h4><span>${esc(f.n)}</span><span class="ftag">${esc(f.tag)}</span></h4><div class="k">${esc(f.k)}</div><div class="w">${esc(f.w)}</div><a class="go" href="${gmap(f.q)}" target="_blank" rel="noopener">Google 地圖 ${ICON_GO}</a></div>`}
+function renderDay(){const d=DAYS.find(x=>x.d===cur),st=d.stay?POIS[d.stay]:null;
+  let h=`<div class="dayhead" style="--rc:${RC[d.region]}"><div class="meta"><span class="pill"><i class="dot"></i><b>Day ${d.d}</b> ${d.date}（週${d.wd}）</span><span class="pill">${esc(d.rname)}</span>`;
+  if(st)h+=`<a class="pill" style="text-decoration:none" href="${gmap(st.q)}" target="_blank" rel="noopener">住 <b>${esc(st.n)}</b></a>`;
+  h+=`</div><h2>${esc(d.title)}</h2><div style="color:var(--muted)">${esc(d.sum)}</div>`;
+  if(d.alert)h+=`<div class="alert">${ICON_WARN}<div>${esc(d.alert)}</div></div>`;
+  h+=`<div class="actions"><button class="go" type="button" id="seeMap">在地圖看今天路線</button></div></div>`;
+  h+=`<div class="cols"><div><div class="card"><ol class="tl">`;
+  d.items.forEach(it=>{const p=it.loc?POIS[it.loc]:null;
+    h+=`<li class="ev"><div class="time">${esc(it.t)}</div><div><h3>${esc(it.ti)}<span class="tag ${esc(it.tag||"")}">${esc(it.tag||"")}</span></h3>`;
+    if(it.de)h+=`<p>${esc(it.de)}</p>`;
+    if(it.warn)h+=`<div class="warn">⚠ ${esc(it.warn)}</div>`;
+    if(p)h+=`<a class="go" href="${gmap(p.q)}" target="_blank" rel="noopener">${esc(p.n)} ${ICON_GO}</a>`;
+    h+=`</div></li>`});
+  h+=`</ol></div></div><div class="stickycol">`;
+  if(d.food&&d.food.length)h+=`<div class="sec" style="margin-top:0"><h2>附近吃</h2><small>${d.food.length} 個參考</small></div><div class="fgrid" style="grid-template-columns:1fr">${d.food.map(foodCard).join("")}</div><p class="note">名單整理自公開資料，營業時間與價格請以 Google 地圖為準；海鮮點餐前先問價。</p>`;
+  h+=`</div></div>`;
+  $("#day").innerHTML=h;$("#seeMap").onclick=()=>{mapDay=cur;mapReg="auto";show("map")}}
+
+/* ---- 美食總覽 ---- */
+function renderFood(){let h="";DAYS.filter(d=>d.food&&d.food.length).forEach(d=>{
+  h+=`<div class="sec"><h2>Day ${d.d} · ${esc(d.rname)}</h2><small>${d.date}（週${d.wd}）${esc(d.title)}</small></div><div class="fgrid">${d.food.map(foodCard).join("")}</div>`});
+  $("#foodAll").innerHTML=h}
+
+/* ---- 清單 ---- */
+function renderMore(){
+  const ck=store.get("pq-todo",{});
+  $("#todo").innerHTML=TODO.map((t,i)=>`<li><input type="checkbox" id="td${i}" ${ck[i]?"checked":""}><span>${esc(t[0])}${t[1]?` <a class="go" style="margin:0 0 0 6px" href="${t[1]}" target="_blank" rel="noopener">連結 ${ICON_GO}</a>`:""}</span></li>`).join("");
+  $$("#todo input").forEach((c,i)=>c.onchange=()=>{ck[i]=c.checked;store.set("pq-todo",ck)});
+  const stays=[["10/24 – 10/26 · 2 晚 · Superior Queen","moc","入住 14:00／退房 12:00，無早餐"],["10/26 – 10/28 · 2 晚 · Cozy Double Room","mv","入住 14:00／退房 12:00，含早餐"],["10/28 – 10/31 · 3 晚 · King Room","hai","入住 14:00／退房 12:00，含早餐"]];
+  $("#stays").innerHTML=stays.map(s=>`<div class="stay"><div><b>${esc(POIS[s[1]].n)}</b><small>${s[0]} · ${s[2]}</small></div><a class="go" href="${gmap(POIS[s[1]].q)}" target="_blank" rel="noopener">地圖 ${ICON_GO}</a></div>`).join("");
+  const tot=COSTS.reduce((a,c)=>a+c[1],0);
+  $("#costs").innerHTML=COSTS.map(c=>`<div class="cost"><span>${esc(c[0])}</span><span>${c[1]<0?"−":""}${Math.abs(c[1]).toLocaleString()}</span></div>`).join("")+`<div class="cost total"><span>合計</span><span>${tot.toLocaleString()}</span></div>`;
+  $("#fixes").innerHTML=FIXES.map(f=>`<div class="fix"><b>${esc(f[0])}</b><span>${esc(f[1])}</span></div>`).join("")}
+
+/* ---- 地圖 ---- */
+const K=1882,LAT0=10.46,LNG0=103.82;
+const X=lo=>(lo-LNG0)*K*0.985, Y=la=>(LAT0-la)*K;
+const OUT=[[10.435,103.93],[10.40,103.875],[10.36,103.845],[10.33,103.838],[10.29,103.86],[10.27,103.91],[10.22,103.955],[10.17,103.96],[10.12,103.96],[10.07,103.96],[10.03,103.968],[10.0,103.985],[9.985,104.0],[9.995,104.03],[10.02,104.045],[10.04,104.048],[10.07,104.042],[10.12,104.052],[10.17,104.066],[10.23,104.052],[10.29,104.042],[10.35,104.052],[10.40,104.032],[10.435,103.99]];
+function smooth(pts){const n=pts.length,m=(a,b)=>[(a[0]+b[0])/2,(a[1]+b[1])/2];let d=`M${m(pts[n-1],pts[0]).map(v=>v.toFixed(1))}`;
+  for(let i=0;i<n;i++){const p=pts[i],q=m(p,pts[(i+1)%n]);d+=` Q${p[0].toFixed(1)},${p[1].toFixed(1)} ${q[0].toFixed(1)},${q[1].toFixed(1)}`}return d+"Z"}
+const ISL=smooth(OUT.map(p=>[X(p[1]),Y(p[0])]));
+let mapDay=0,mapReg="all",VB=[0,0,540,960],selPin=null;
+const REGS={all:[0,0,540,960],north:[10,150,330,300],central:[170,340,320,330],south:[200,720,300,240]};
+function dayKeys(d){const out=[];(DAYS.find(x=>x.d===d).items||[]).forEach(it=>{if(it.loc&&out[out.length-1]!==it.loc)out.push(it.loc)});return out}
+function targetVB(){
+  if(mapDay&&mapReg==="auto"){const ks=dayKeys(mapDay);if(ks.length){let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;ks.forEach(k=>{const p=POIS[k],x=X(p.lo),y=Y(p.la);x0=Math.min(x0,x);x1=Math.max(x1,x);y0=Math.min(y0,y);y1=Math.max(y1,y)});
+    let w=Math.max(x1-x0+90,200),h=Math.max(y1-y0+90,200);const mb=$("#svg").getBoundingClientRect(),ar=(mb.width||1)/(mb.height||1);
+    if(w/h<ar)w=h*ar;else h=w/ar;return [(x0+x1)/2-w/2,(y0+y1)/2-h/2,w,h]}}
+  const r=REGS[mapReg]||REGS.all,mb=$("#svg").getBoundingClientRect(),ar=(mb.width||1)/(mb.height||1);let [x,y,w,h]=r;
+  if(w/h<ar){const nw=h*ar;x-=(nw-w)/2;w=nw}else{const nh=w/ar;y-=(nh-h)/2;h=nh}return [x,y,w,h]}
+function drawMap(){
+  const svg=$("#svg");if(!svg||$("#v-map").classList.contains("hide"))return;
+  const t=targetVB();VB=t;svg.setAttribute("viewBox",t.map(v=>v.toFixed(1)).join(" "));
+  const r=svg.getBoundingClientRect(),ppu=Math.min(r.width/t[2],r.height/t[3])||1,s=1/ppu; // 1 px in user units
+  let h=`<rect x="-3000" y="-3000" width="7000" height="7000" fill="var(--water)"/>`;
+  h+=`<path d="${ISL}" fill="var(--land)" stroke="var(--muted)" stroke-width="${1.4*s}" stroke-linejoin="round" opacity=".95"/>`;
+  h+=`<ellipse cx="${X(104.042)}" cy="${Y(9.964)}" rx="${14}" ry="${9}" fill="var(--land)" stroke="var(--muted)" stroke-width="${1.2*s}"/>`;
+  h+=`<text class="lab" x="${X(103.84)-20}" y="${Y(10.12)}" font-size="${12*s}" fill="var(--muted)" style="font-size:${12*s}px;fill:var(--muted)">暹羅灣</text>`;
+  const keys=mapDay?dayKeys(mapDay):Object.keys(POIS);
+  if(mapDay){const pts=keys.map(k=>X(POIS[k].lo)+","+Y(POIS[k].la)).join(" ");
+    h+=`<polyline points="${pts}" fill="none" stroke="${RC[DAYS.find(d=>d.d===mapDay).region]}" stroke-width="${3*s}" stroke-dasharray="${8*s} ${6*s}" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>`}
+  const label=mapDay||ppu>1.15;
+  const placed=[],seen={};
+  keys.forEach((k,i)=>{if(seen[k])return;seen[k]=1;const p=POIS[k],x=X(p.lo),y=Y(p.la);
+    const days=DAYS.filter(d=>d.items.some(it=>it.loc===k)||d.stay===k).map(d=>d.d);
+    const reg=(days.length?DAYS.find(d=>d.d===days[0]).region:"central");
+    const num=mapDay?(i+1):(days.length?days[0]:"·"); const R=11*s;
+    let shape;
+    if(p.c==="stay")shape=`<path d="M0,${-R*1.2}L${R*1.2},0L0,${R*1.2}L${-R*1.2},0Z" fill="${RC[reg]}" stroke="#fff" stroke-width="${1.6*s}"/>`;
+    else if(p.c==="night"||p.c==="show")shape=`<path d="M0,${-R*1.15}L${R*1.1},${R*.9}L${-R*1.1},${R*.9}Z" fill="${RC[reg]}" stroke="#fff" stroke-width="${1.6*s}" stroke-linejoin="round"/>`;
+    else shape=`<circle r="${R}" fill="${RC[reg]}" stroke="#fff" stroke-width="${1.6*s}"/>`;
+    h+=`<g class="mp" tabindex="0" role="button" aria-label="${esc(p.n)}" data-k="${k}" transform="translate(${x.toFixed(1)},${y.toFixed(1)})">${shape}<text y="${4*s}" style="font-size:${11*s}px">${num}</text>${label?lab(p,x,y,R,s,placed):""}</g>`});
+  svg.innerHTML=h;
+  $$("#svg .mp").forEach(g=>{const f=()=>openSheet(g.dataset.k);g.onclick=f;g.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();f()}}});
+  if(selPin&&POIS[selPin])openSheet(selPin,true);
+  // 列表
+  $("#plist").innerHTML=keys.map((k,i)=>({k,i})).filter((o,j,a)=>a.findIndex(z=>z.k===o.k)===j).map(({k,i})=>{const p=POIS[k],days=DAYS.filter(d=>d.items.some(it=>it.loc===k)||d.stay===k),reg=days.length?days[0].region:"central";
+    return `<div class="card prow" style="--rc:${RC[reg]}"><span class="nn">${mapDay?i+1:(days[0]?days[0].d:"·")}</span><div class="t">${esc(p.n)}<small>${days.length?"Day "+days.map(d=>d.d).join("、"):""}${p.ex?" · Plus Code 推算":""}</small></div><a class="go" style="margin:0" href="${gmap(p.q)}" target="_blank" rel="noopener">導航 ${ICON_GO}</a></div>`}).join("")}
+function lab(p,x,y,R,s,placed){const t=p.n.replace(/（.*）/,""),w=[...t].reduce((a,c)=>a+(c.charCodeAt(0)>255?1:.58),0)*10.5*s,h=12*s;
+  for(const dy of [0,13,-13,26,-26,39]){const ly=y+dy*s,r={x0:x+R+4*s,x1:x+R+4*s+w,y0:ly-h/2,y1:ly+h/2};
+    if(!placed.some(q=>r.x0<q.x1&&r.x1>q.x0&&r.y0<q.y1&&r.y1>q.y0)){placed.push(r);return `<text class="lab" x="${R+4*s}" y="${(4+dy)*s}" style="text-anchor:start;font-size:${10.5*s}px">${esc(t)}</text>`}}
+  return ""}
+function openSheet(k,keep){selPin=k;const p=POIS[k],sh=$("#sheet"),days=DAYS.filter(d=>d.items.some(it=>it.loc===k)||d.stay===k).map(d=>"Day "+d.d).join("、");
+  sh.hidden=false;sh.innerHTML=`<button class="x" type="button" aria-label="關閉">×</button><h4>${esc(p.n)}</h4><p>${days||""}${p.ex?" · 座標由 Plus Code 推算":" · 示意位置"}</p><a class="go" href="${gmap(p.q)}" target="_blank" rel="noopener">在 Google 地圖開啟 ${ICON_GO}</a>`;
+  sh.querySelector(".x").onclick=()=>{selPin=null;sh.hidden=true}}
+function segs(){
+  const ds=$("#dayseg");ds.innerHTML=`<button type="button" data-d="0" aria-pressed="${mapDay===0}">全部</button>`+DAYS.filter(d=>dayKeys(d.d).length).map(d=>`<button type="button" data-d="${d.d}" aria-pressed="${mapDay===d.d}">D${d.d}</button>`).join("");
+  ds.querySelectorAll("button").forEach(b=>b.onclick=()=>{mapDay=+b.dataset.d;mapReg=mapDay?"auto":"all";selPin=null;$("#sheet").hidden=true;segs();drawMap()});
+  const rs=$("#regseg");rs.innerHTML=[["all","全島"],["north","北"],["central","中"],["south","南"]].map(r=>`<button type="button" data-r="${r[0]}" aria-pressed="${mapReg===r[0]}">${r[1]}</button>`).join("");
+  rs.querySelectorAll("button").forEach(b=>b.onclick=()=>{mapReg=b.dataset.r;if(mapDay&&mapReg!=="auto"){/* 保留當日路線，但改視窗 */}segs();drawMap()})}
+const _show=show;show=function(v){_show(v);if(v==="map"){segs();drawMap()}};
+$$(".tab").forEach(t=>t.onclick=()=>show(t.dataset.v));
+addEventListener("resize",()=>drawMap());
+
+/* ---- 啟動 ---- */
+chips();renderDay();renderFood();renderMore();
+const h=(location.hash||"").slice(1),v0=["plan","map","food","more"].includes(h)?h:store.get("pq-view","plan");
+show(["plan","map","food","more"].includes(v0)?v0:"plan");
+})();
+</script>
+
+</body></html>
