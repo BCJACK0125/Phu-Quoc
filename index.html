@@ -1,4 +1,26 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<style id="mobile-width-safety">
+/* 手機窄螢幕防溢位：保留日期籤與橫向控制列自己的滑動，不讓整頁被撐寬 */
+html, body { width:100%; max-width:100%; }
+body { overflow-x: clip; }
+.wrap, main, .view, .card, .hero, .dayhead, .cols, .food, .prow, .fl, .fix, .stay { min-width:0; }
+img, svg, video, canvas { max-width:100%; }
+.ev h3, .ev p, .food h4, .food .k, .food .w, .prow .t, .alert, .note, footer { overflow-wrap:anywhere; word-break:normal; }
+@media (max-width: 420px) {
+  body { padding-left:max(12px, env(safe-area-inset-left, 0px)); padding-right:max(12px, env(safe-area-inset-right, 0px)); }
+  .bar { margin-left:calc(-1 * max(12px, env(safe-area-inset-left, 0px))); margin-right:calc(-1 * max(12px, env(safe-area-inset-right, 0px))); padding-left:max(12px, env(safe-area-inset-left, 0px)); padding-right:max(12px, env(safe-area-inset-right, 0px)); gap:6px; }
+  .ibtn { padding:7px 9px; }
+  .hero { padding:14px; }
+  .kpis { grid-template-columns:repeat(2, minmax(0, 1fr)); }
+  .flights, .fgrid, .plist { grid-template-columns:minmax(0, 1fr); }
+  .ev { grid-template-columns:62px minmax(0, 1fr); gap:8px; padding:11px 12px; }
+  .mapbar { gap:6px; }
+  .seg { min-width:0; max-width:100%; flex-wrap:wrap; }
+  .seg button { padding:5px 8px; }
+}
+</style>
+
+</head><body>
 <title>富國島旅遊手冊</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -239,6 +261,8 @@ body.imm .hero,body.imm footer{display:none}
       <div class="card stays" id="stays"></div>
       <div class="sec"><h2>已付費用（來自 PDF）</h2><small>原檔未標幣別</small></div>
       <div class="card" id="costs"></div>
+      <div class="sec"><h2>天氣預報</h2><small>yr.no，10/23 更新</small></div>
+      <div class="card" id="wxlist"></div>
       <div class="sec"><h2>本版校對修正</h2></div>
       <div class="card" id="fixes"></div>
     </div>
@@ -249,6 +273,10 @@ body.imm .hero,body.imm footer{display:none}
     <a href="https://vinwonders.com/en/wonderpedia/news/what-to-eat-at-grand-world-phu-quoc/" target="_blank" rel="noopener">Grand World 餐廳</a> ·
     <a href="https://wanderlog.com/list/geoCategory/198067/where-to-eat-best-restaurants-in-duong-dong" target="_blank" rel="noopener">Dương Đông 餐廳</a> ·
     <a href="https://visitphuquoc.com.vn/en/lunch-at-sunset-town-with-a-range-of-delicious-eateries-and-beautiful-views-9754" target="_blank" rel="noopener">日落小鎮餐廳</a> ·
+    <a href="https://www.yr.no/en/forecast/daily-table/2-1569972/Vietnam/An%20Giang/Phu%20Quoc%20Island" target="_blank" rel="noopener">天氣 yr.no</a> ·
+    <a href="https://vietnamguide.co.kr/place/phu-quoc-delluna-spa/" target="_blank" rel="noopener">Delluna Spa（韓文）</a> ·
+    <a href="https://vietnamguide.co.kr/place/푸꾸옥-크라운-스파/" target="_blank" rel="noopener">Crown Spa（韓文）</a> ·
+    <a href="https://www.trvlogue.com/ko/phu-quoc-king-kong-mart-shopping" target="_blank" rel="noopener">金剛超市（韓文）</a> ·
     <a href="https://www.vietjetair.com/en/destinations/experience/what-to-eat-in-phu-quoc-discover-local-cuisine-from-morning-till-late-night" target="_blank" rel="noopener">在地早午晚餐</a></footer>
 </div>
 <script>
@@ -277,11 +305,14 @@ const POIS = {
   hon:{n:"太陽世界香島 Hòn Thơm",la:9.9640,lo:104.0420,c:"sight",q:"Sun World Hon Thom Nature Park Phu Quoc",ex:0},
   khem:{n:"Khem Beach 剋姆海灘",la:10.0300,lo:104.0392,c:"sight",q:"Khem Beach Phu Quoc",ex:0},
   pagoda:{n:"護國寺 Hộ Quốc",la:10.0720,lo:104.0170,c:"sight",q:"Ho Quoc Pagoda Phu Quoc",ex:0},
+  kk:{n:"金剛超市 King Kong Mart（Trần Hưng Đạo 141A）",la:10.2092,lo:103.9625,c:"shop",q:"King Kong Mart 141A Tran Hung Dao Phu Quoc",ex:0},
+  delluna:{n:"Delluna Spa（Trần Hưng Đạo 139）",la:10.2091,lo:103.9622,c:"spa",q:"Phu Quoc Delluna Spa 139 Tran Hung Dao",ex:0},
+  crown:{n:"Crown Spa & Nail（Grand World）",la:10.3228,lo:103.8655,c:"spa",q:"Crown Spa Nail Grand World Phu Quoc",ex:0},
   fish:{n:"魚露工廠（Dương Đông 一帶）",la:10.2050,lo:103.9720,c:"sight",q:"Phu Quoc fish sauce factory",ex:0}
 };
 /* ===== Days ===== */
 const DAYS = [
- {d:1,date:"10/24",wd:"六",region:"north",rname:"北島",title:"抵達 · 富國大世界",stay:"moc",
+ {d:1,wx:{t:"29°/26°",r:"6 mm",s:"上午雨、午後陣雨、傍晚轉多雲"},date:"10/24",wd:"六",region:"north",rname:"北島",title:"抵達 · 富國大世界",stay:"moc",
   sum:"落地、VinBus、入住，晚上看免費水舞",
   items:[
    {t:"14:10",ti:"桃園 T1 起飛",de:"VietJet Air，B7 登機門；16:50 抵達富國島（航班 VJ845）。電子入境卡 10/22 起可填，QR Code 截圖＋列印紙本。",tag:"航班"},
@@ -299,7 +330,7 @@ const DAYS = [
    {n:"Cơm Bắc 1983",k:"越式家常飯菜，營業時間長",w:"Shanghai Town 68–70 · 07:00–22:30",q:"Com Bac 1983 Grand World Phu Quoc",tag:"飯"},
    {n:"Saigon Domain",k:"湖畔歐式餐廳，可邊吃邊看水舞（需訂位）",w:"Venice Town SA-01-37 · 07:30–23:00",q:"Saigon Domain Grand World Phu Quoc",tag:"看秀"}
   ]},
- {d:2,date:"10/25",wd:"日",region:"north",rname:"北島",title:"VinWonders 珍珠樂園",stay:"moc",
+ {d:2,wx:{t:"30°/24°",r:"5.5 mm",s:"上午雨、下午多雲、晚上雨；帶雨衣"},date:"10/25",wd:"日",region:"north",rname:"北島",title:"VinWonders 珍珠樂園",stay:"moc",
   sum:"整天玩樂園，晚上回 Grand World 吃飯",
   items:[
    {t:"08:00",ti:"早餐",de:"樂園 09:00 開，先吃再走。",tag:"吃",meal:1},
@@ -314,12 +345,16 @@ const DAYS = [
    {t:"20:00",ti:"晚餐 → 21:30 免費水舞（可選）",de:"第二晚可換個位置看；也可試付費大秀 Tinh hoa Việt Nam（約 23–30 萬越盾），趕不上就略過。",tag:"吃",meal:1}
   ],
   food:[
-   {n:"Phở Lý Quốc Sư",k:"河粉，早上開園前先吃",w:"Shanghai Town SA-03-18 · 08:00–23:00",q:"Pho Ly Quoc Su Grand World Phu Quoc",tag:"早餐"},
-   {n:"Cơm Niêu Cái Bếp Garden",k:"砂鍋飯（陶鍋焦香）",w:"Grand World IN 07-39 · 10:00–22:00",q:"Com Nieu Cai Bep Garden Grand World Phu Quoc",tag:"砂鍋飯"},
+   {n:"Hà Nội Quán",k:"北越家常菜，早餐或午餐都行",w:"Indochine Town IN-03-21 · 07:00–21:00",q:"Ha Noi Quan Grand World Phu Quoc",tag:"家常"},
+   {n:"Bún Bò Huế 38",k:"順化牛肉麵，檸檬香茅湯頭偏辣",w:"Grand World · 約 60,000 越盾",q:"Bun Bo Hue 38 Grand World Phu Quoc",tag:"麵"},
+   {n:"Bánh Mì Xin Chào",k:"炭烤法國麵包，便宜快速（可外帶）",w:"Grand World · 約 45,000 越盾 · 下午 2 點前後排隊",q:"Banh Mi Xin Chao Grand World Phu Quoc",tag:"輕食"},
    {n:"Thế Giới Hải Sản Hàm Ninh",k:"海鮮（Hàm Ninh 蟹系）",w:"Indochine Town IN 06-31 · 17:00–00:00",q:"The Gioi Hai San Ham Ninh Grand World Phu Quoc",tag:"海鮮"},
    {n:"66 Paris（Hải Sản 66）",k:"海鮮",w:"Mallorca Town MC 05-26 · 07:30–22:00",q:"Hai San 66 Paris Grand World Phu Quoc",tag:"海鮮"}
+  ],
+  spa:[
+   {n:"Crown Spa & Nail",k:"樂園走完腿痠，可晚上按一下；Google 4.9★（9,263 則），韓籍老闆、員工會韓文",w:"Grand World 內 · 09:00–22:00 · 晚上 8 點最擠，建議先預約 · +84 787 711 166",q:"Crown Spa Nail Grand World Phu Quoc",tag:"按摩"}
   ]},
- {d:3,date:"10/26",wd:"一",region:"central",rname:"北→中",title:"Safari · 搬到中部 · 夜市＋火舞",stay:"mv",
+ {d:3,wx:{t:"30°/24°",r:"4.8 mm",s:"多雲，晚間轉晴；適合 Ocsen"},date:"10/26",wd:"一",region:"central",rname:"北→中",title:"Safari · 搬到中部 · 夜市＋火舞",stay:"mv",
   sum:"週一有 22:00 火舞：夜市後接 Ocsen",
   alert:"校對：Ocsen 22:00 火舞週二停演，所以排在週一（Day3）夜市之後；週二（Day4）當天不排火舞。Ocsen 20:00 後入場要付 80,000 越盾，建議 20:00 前進場卡位。",
   items:[
@@ -329,6 +364,7 @@ const DAYS = [
    {t:"12:30",ti:"午餐",de:"園內或回 Grand World 吃。",tag:"吃",meal:1},
    {t:"13:30–14:30",ti:"Grand World 泰迪熊博物館（10:00–21:00）",de:"逛完回 Mộc 取行李。",loc:"teddy",tag:"景點"},
    {t:"15:00",ti:"Grab → M Village（Dương Đông）",de:"約 40–50 分鐘（我的估計，未驗證）；14:00 起可入住，含早餐。",loc:"mv",tag:"住宿"},
+   {t:"16:15",ti:"金剛超市 King Kong Mart",de:"Trần Hưng Đạo 141A，08:00–22:30（陽東夜市另有分店）。胡椒、魷魚乾、越南咖啡、椰子餅乾；部分商品比在地市場略貴，先比價。離 Ocsen 與 M Village 都近。",loc:"kk",tag:"購物"},
    {t:"17:00",ti:"陽東夜市開市（17:00–00:00）",de:"換錢：Robinson Pearl、金剛超商。先在此吃點小吃。",loc:"dd",tag:"夜市",meal:1},
    {t:"18:30",ti:"Grab → Sonasea 夜市（18:00–23:00）",de:"以海鮮熱炒、火鍋為主，價格比陽東實惠。位置在 Dương Đông 南邊約 10 公里（我用 Plus Code 推算），車程約 20–25 分鐘。",loc:"sona",tag:"夜市",meal:1,warn:"Sonasea 與 Ocsen 反向，來回會花約 45 分鐘，請抓時間。"},
    {t:"19:45",ti:"Grab → Ocsen（目標 20:00 前進場）",de:"20:00 前免入場費；之後 80,000 越盾。想省事可把 Sonasea 換成陽東夜市吃，就能早點到 Ocsen。",loc:"ocsen",tag:"表演"},
@@ -339,17 +375,18 @@ const DAYS = [
    {n:"Bún Quậy Kiến Xây（總店）",k:"小卷／蝦粗米線",w:"28 Bạch Đằng，離陽東夜市近",q:"Bun Quay Kien Xay 28 Bach Dang Phu Quoc",tag:"招牌"},
    {n:"Si's Crab House",k:"螃蟹套餐、招牌醬",w:"26 Nguyễn Trãi · 近陽東夜市",q:"Si's Crab House 26 Nguyen Trai Phu Quoc",tag:"螃蟹"},
    {n:"Sonasea 夜市海鮮",k:"海鮮熱炒、火鍋，龍蝦大餐價格較親民",w:"18:00–23:00",q:"4XHJ+VJR Duong To Phu Quoc",tag:"夜市"},
-   {n:"Cơm Việt – Green Tree",k:"Grand World 午餐備案，越式家常飯",w:"Indochine Town · 10:00–22:00",q:"Com Viet Green Tree Grand World Phu Quoc",tag:"午餐"}
+   {n:"Bò Tơ Tây Ninh Sáu Tâm 68",k:"Grand World 午餐備案，牛肉料理",w:"Mallorca Town，夜市最左側角落 · 11:00–24:00",q:"Bo To Tay Ninh Sau Tam 68 Grand World Phu Quoc",tag:"午餐"}
   ]},
- {d:4,date:"10/27",wd:"二",region:"central",rname:"中部",title:"東島半日 · 按摩 · Camia",stay:"mv",
+ {d:4,wx:{t:"30°/26°",r:"0.7 mm",s:"多雲，幾乎無雨；東島好日子"},date:"10/27",wd:"二",region:"central",rname:"中部",title:"東島半日 · 按摩 · Camia",stay:"mv",
   sum:"週二沒有火舞：晚上輕鬆收",
-  alert:"校對：這天 Ocsen 沒有 22:00 火舞，所以前一版把 Ocsen、Sonasea 排在週二是錯的，已改到 Day3（週一）。",
+  alert:"校對：這天 Ocsen 沒有 22:00 火舞，所以火舞排在前一天（Day3 週一）夜市之後；今晚輕鬆收，早點休息。",
   items:[
    {t:"08:30",ti:"M Village 早餐",de:"",loc:"mv",tag:"吃",meal:1},
    {t:"09:00",ti:"東島半日（叫 Grab 或包車）",de:"胡椒園 → Hàm Ninh 漁村 → Suối Tranh 瀑布（雨季水量大、石階滑）→ Sim 酒廠。現成團約 US$79。",loc:"eastv",tag:"景點"},
    {t:"11:30",ti:"Hàm Ninh 午餐",de:"招牌 Hàm Ninh 蟹、鯡魚沙拉；點餐前先問價，帶現金。",loc:"eastv",tag:"吃",meal:1},
    {t:"13:00",ti:"Suối Tranh 瀑布（可選）",de:"",loc:"suoi",tag:"景點"},
-   {t:"14:00–16:00",ti:"按摩",de:"在 Dương Đông 一帶訂一間，出發前確認接送。",tag:"放鬆"},
+   {t:"14:00–15:30",ti:"Delluna Spa 按摩",de:"139 Trần Hưng Đạo，08:00–22:00；Google 4.9★（4,246 則）；韓籍老闆、員工會韓文；免費飯店接送；下午 2 點最擠，建議先預約（+84 828 221 004）。",loc:"delluna",tag:"放鬆"},
+   {t:"15:40",ti:"順路逛金剛超市（隔壁 141A）",de:"買伴手禮；16:15 前要出發去 Camia（Ông Lãng，車程我估約 15–20 分鐘，未驗證）。",loc:"kk",tag:"購物"},
    {t:"16:45",ti:"抵達 Camia（17:00 訂位）",de:"KKday 憑證要求提前 15 分鐘；3 人；訂單 26KK266894688。位在北部 Ông Lãng，餐廳面海，價位中高。",loc:"camia",tag:"晚餐",warn:"Camia 詳細地址未查到，請以 KKday 憑證上的為準。"},
    {t:"19:00",ti:"回 Dương Đông，夜市逛逛（可選）",de:"想吃甜點：Dinh Cầu 夜市的 bánh khéo、椰子冰淇淋。這晚沒有火舞，早點休息，明天要搬到南島。",loc:"dd",tag:"夜市"}
   ],
@@ -358,10 +395,13 @@ const DAYS = [
    {n:"Hàm Ninh 漁村海鮮",k:"Hàm Ninh 蟹、鯡魚沙拉、烤鯖魚",w:"Biển Xanh、Hạnh Nhung、Kim Cương、Sông Lê；浮動餐廳 Bè Ghe、Tinh Biển",q:"Ham Ninh fishing village restaurants Phu Quoc",tag:"午餐"},
    {n:"Sông Xanh Restaurant",k:"Hàm Ninh 蟹炒飯",w:"217 Đường 30 Tháng 4",q:"Song Xanh Restaurant 217 30 Thang 4 Phu Quoc",tag:"螃蟹"},
    {n:"Dì Hồng Eatery",k:"椰奶魚湯米線，近 Dinh Cầu 夜市",w:"4 Nguyễn Trãi",q:"Di Hong Eatery 4 Nguyen Trai Phu Quoc",tag:"在地"}
+  ],
+  spa:[
+   {n:"Delluna Spa（首選）",k:"精油全身、熱石、足底；Google 4.9★ 4,246 則；韓籍老闆；免費接送",w:"139 Trần Hưng Đạo · 08:00–22:00 · +84 828 221 004 · 下午 2 點最擠，上午較空",q:"Phu Quoc Delluna Spa 139 Tran Hung Dao",tag:"按摩"}
   ]}
 ];
 DAYS.push(
- {d:5,date:"10/28",wd:"三",region:"south",rname:"南島",title:"搬到南島 · 日落小鎮",stay:"hai",
+ {d:5,wx:{t:"31°/26°",r:"2 mm",s:"上午晴、午後多雲、晚間陣雨；煙火可能受影響"},date:"10/28",wd:"三",region:"south",rname:"南島",title:"搬到南島 · 日落小鎮",stay:"hai",
   sum:"Sao Beach 午餐 → 日落小鎮 → 親吻橋日落 → 煙火",
   items:[
    {t:"12:00 前",ti:"M Village 退房，叫 Grab 往南",de:"車程約 45–60 分鐘（我的估計）。",loc:"mv",tag:"移動"},
@@ -379,8 +419,9 @@ DAYS.push(
    {n:"Sorrento Restaurant & Bar",k:"混合料理，海景",w:"臨海路，近親吻橋北入口",q:"Sorrento Restaurant Sunset Town Phu Quoc",tag:"看日落"},
    {n:"LAGOON BBQ & Vietnamese",k:"烤肉與越式料理，空間開闊",w:"Venice Street FB2-05 · 午餐人多宜訂位",q:"Lagoon BBQ Sunset Town Phu Quoc",tag:"烤肉"}
   ]},
- {d:6,date:"10/29",wd:"四",region:"south",rname:"南島",title:"跨海纜車 · 太陽世界香島",stay:"hai",
+ {d:6,wx:{t:"29°/25°",r:"21 mm",s:"上午雨、午後與晚上大雨；整趟最雨"},date:"10/29",wd:"四",region:"south",rname:"南島",title:"跨海纜車 · 太陽世界香島",stay:"hai",
   sum:"早去早回，晚上夜市＋煙火",
+  alert:"天氣：預報 10/29 是整趟最雨（約 21 mm，午後與晚上大雨）。纜車遇雷雨或強風可能停駛，請前一晚與當天早上看預報。雨太大的備案：改去日落小鎮室內餐廳／咖啡館、按摩；晚上煙火看天色。",
   items:[
    {t:"08:45",ti:"An Thới 纜車站排隊（09:00–17:00）",de:"第一輪 09:00–11:30；11:30–13:30 暫停；第二輪 13:30–14:00；第三輪 15:30–17:30。",loc:"cable",tag:"移動",warn:"最後一班回程時間未驗證，請以現場公告為準。"},
    {t:"09:30",ti:"香島水上樂園（10:00 起）與陸上樂園（09:30 起）",de:"泳衣不能有金屬拉鍊扣環；入口往右有置物櫃與更衣室，需押金、給感應手環；離場前還手環並把收據給櫃檯。淋浴間只有冷水、無沐浴用品與吹風機。",loc:"hon",tag:"樂園"},
@@ -392,14 +433,14 @@ DAYS.push(
    {t:"21:30",ti:"日落小鎮煙火",de:"",loc:"kiss",tag:"表演"}
   ],
   food:[
-   {n:"Yushima Japanese Restaurant",k:"壽司、生魚片，在纜車站 T1 柱旁",w:"Unit FB304B，搭纜車前後都方便",q:"Yushima Japanese Restaurant Sunset Town Phu Quoc",tag:"日式"},
+   {n:"La Festa Restaurant",k:"輕地中海料理，空間好拍",w:"Hoàng Hôn Town，La Festa 飯店區內",q:"La Festa Restaurant Sunset Town Phu Quoc",tag:"輕食"},
    {n:"Kungfu Noodle Phu Quoc",k:"麵、點心，快速吃",w:"Vui Fest Bazaar 區",q:"Kungfu Noodle Phu Quoc Sunset Town",tag:"快速"},
    {n:"Green Tree Buffet SeaFood",k:"海鮮自助，100 多道亞歐料理",w:"Sunset Town",q:"Green Tree Buffet Seafood Sunset Town Phu Quoc",tag:"自助"},
    {n:"The Gangs Sunset",k:"歐亞料理，音樂氣氛",w:"Amalfi Street, Hoàng Hôn Town",q:"The Gangs Sunset Phu Quoc",tag:"氣氛"}
   ]},
- {d:7,date:"10/30",wd:"五",region:"south",rname:"南島",title:"Khem Beach · 最後一晚",stay:"hai",
+ {d:7,wx:{t:"29°/25°",r:"11 mm",s:"全天雨、夜間小雨"},date:"10/30",wd:"五",region:"south",rname:"南島",title:"Khem Beach · 最後一晚",stay:"hai",
   sum:"海灘＋護國寺；最後一晚日落小鎮夜市",
-  alert:"住宿：Hai Bột 從 10/28 住到 10/31，Day7 不用換飯店，行李不必搬。",
+  alert:"天氣：預報 10/30 全天有雨（約 11 mm），Khem Beach 與方案 B 浮潛不穩。雨天備案：護國寺、魚露工廠、按摩、咖啡館；出發前一晚再看預報。住宿：Hai Bột 住到 10/31，行李不必搬。",
   items:[
    {t:"08:30",ti:"Hai Bột 早餐",de:"",loc:"hai",tag:"吃",meal:1},
    {t:"09:30–11:30",ti:"Khem Beach（上午浪較靜、人少）",de:"方案 B（晴天、海況好）：08:00–08:30 從安泰港出發跳島浮潛，3–4 島約 US$35 起、約 16:00 回，雨季可能停航，前一天再訂。",loc:"khem",tag:"海灘"},
@@ -415,7 +456,7 @@ DAYS.push(
    {n:"Sorrento Restaurant & Bar",k:"海景晚餐",w:"近親吻橋北入口",q:"Sorrento Restaurant Sunset Town Phu Quoc",tag:"晚餐"},
    {n:"開心夜市",k:"收尾小吃、甜點",w:"16:00–00:00",q:"22P3+78G An Thoi Phu Quoc",tag:"夜市"}
   ]},
- {d:8,date:"10/31",wd:"六",region:"south",rname:"返程",title:"凌晨出發 · 回家",stay:null,
+ {d:8,wx:{t:"30°/25°",r:"7.6 mm",s:"上午小雨、午後陣雨"},date:"10/31",wd:"六",region:"south",rname:"返程",title:"凌晨出發 · 回家",stay:null,
   sum:"05:30 出發，08:25 起飛",
   items:[
    {t:"前一晚",ti:"確認 05:30 的車",de:"請 Hai Bột 代叫或先約 Grab；凌晨不好叫車。",loc:"hai",tag:"移動"},
@@ -436,6 +477,8 @@ const TODO = [
 ];
 const COSTS = [["機票",8375],["eSIM",225],["Camia 訂位",687],["濾芯",94],["門票",4041+2532],["折抵",-880]];
 const FIXES = [
+  ["餐廳歇業","Phở Lý Quốc Sư、Cơm Niêu（Green Tree／Cái Bếp）已移除，改為 Hà Nội Quán、Bún Bò Huế 38、Bánh Mì Xin Chào、Bò Tơ Tây Ninh Sáu Tâm 68；Yushima 改為 La Festa。這些新名單請出發前再看一次 Google 地圖營業狀態。"],
+  ["金剛超市與按摩","Day3 16:15 排入金剛超市；Day4 按摩定為隔壁的 Delluna Spa，按完順路再逛。"],
   ["Ocsen／Sonasea 位置","Ocsen 週二無 22:00 火舞，火舞改接在 Day3（週一）夜市之後；Day4 週二不排火舞。"],
   ["VinBus 17","舊資訊為免費，現為 50,000 越盾（2026/1/1 起），請備現金。"],
   ["Symphony of the Sea","第三季 11/10 才回歸，10/28–29 沒有，煙火以 Kiss of the Sea 為準。"],
@@ -493,6 +536,7 @@ function foodCard(f){return `<div class="card food"><h4><span>${esc(f.n)}</span>
 function renderDay(){const d=DAYS.find(x=>x.d===cur),st=d.stay?POIS[d.stay]:null;
   let h=`<div class="dayhead" style="--rc:${RC[d.region]}"><div class="meta"><span class="pill"><i class="dot"></i><b>Day ${d.d}</b> ${d.date}（週${d.wd}）</span><span class="pill">${esc(d.rname)}</span>`;
   if(st)h+=`<a class="pill" style="text-decoration:none" href="${gmap(st.q)}" target="_blank" rel="noopener">住 <b>${esc(st.n)}</b></a>`;
+  if(d.wx)h+=`<span class="pill" style="display:block;border-radius:14px;flex-basis:100%">天氣 <b>${esc(d.wx.t)}</b> · 雨量 ${esc(d.wx.r)} · ${esc(d.wx.s)}</span>`;
   h+=`</div><h2>${esc(d.title)}</h2><div style="color:var(--muted)">${esc(d.sum)}</div>`;
   if(d.alert)h+=`<div class="alert">${ICON_WARN}<div>${esc(d.alert)}</div></div>`;
   h+=`<div class="actions"><button class="go" type="button" id="seeMap">在地圖看今天路線</button></div></div>`;
@@ -505,6 +549,7 @@ function renderDay(){const d=DAYS.find(x=>x.d===cur),st=d.stay?POIS[d.stay]:null
     h+=`</div></li>`});
   h+=`</ol></div></div><div class="stickycol">`;
   if(d.food&&d.food.length)h+=`<div class="sec" style="margin-top:0"><h2>附近吃</h2><small>${d.food.length} 個參考</small></div><div class="fgrid" style="grid-template-columns:1fr">${d.food.map(foodCard).join("")}</div><p class="note">名單整理自公開資料，營業時間與價格請以 Google 地圖為準；海鮮點餐前先問價。</p>`;
+  if(d.spa&&d.spa.length)h+=`<div class="sec"><h2>按摩推薦</h2><small>韓文評價整理</small></div><div class="fgrid" style="grid-template-columns:1fr">${d.spa.map(foodCard).join("")}</div>`;
   h+=`</div></div>`;
   $("#day").innerHTML=h;$("#seeMap").onclick=()=>{mapDay=cur;mapReg="auto";show("map")}}
 
@@ -522,6 +567,7 @@ function renderMore(){
   $("#stays").innerHTML=stays.map(s=>`<div class="stay"><div><b>${esc(POIS[s[1]].n)}</b><small>${s[0]} · ${s[2]}</small></div><a class="go" href="${gmap(POIS[s[1]].q)}" target="_blank" rel="noopener">地圖 ${ICON_GO}</a></div>`).join("");
   const tot=COSTS.reduce((a,c)=>a+c[1],0);
   $("#costs").innerHTML=COSTS.map(c=>`<div class="cost"><span>${esc(c[0])}</span><span>${c[1]<0?"−":""}${Math.abs(c[1]).toLocaleString()}</span></div>`).join("")+`<div class="cost total"><span>合計</span><span>${tot.toLocaleString()}</span></div>`;
+  $("#wxlist").innerHTML=DAYS.filter(d=>d.wx).map(d=>`<div class="fix"><b>${d.date}（週${d.wd}）${esc(d.wx.t)} · ${esc(d.wx.r)}</b><span>${esc(d.wx.s)}</span></div>`).join("");
   $("#fixes").innerHTML=FIXES.map(f=>`<div class="fix"><b>${esc(f[0])}</b><span>${esc(f[1])}</span></div>`).join("")}
 
 /* ---- 地圖 ---- */
